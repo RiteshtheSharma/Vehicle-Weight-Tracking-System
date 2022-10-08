@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.images {
+  width: 30vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .images {
+    width: 47vw;
+  }
+}
