@@ -1,3 +1,4 @@
+import React from 'react';
 import Intro from "./Components/Intro/Intro";
 import {BrowserRouter,
  Routes,

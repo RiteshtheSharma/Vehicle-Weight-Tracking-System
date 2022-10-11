@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
 import {Buffer} from 'buffer';
+import { ContactlessOutlined } from "@mui/icons-material";
 // const videoConstraints = {
 //   width: 540,
 //   facingMode: "environment"
@@ -132,11 +133,11 @@ useEffect(() => {
 
 
 const CaptureImg = async () => {stopStreaming();
-  var data = ImgNode.toString().replace(/^data:image\/jpg;base64,/, "");
-  var buf = Buffer.from(data, "base64");
+  
+  var data = ImgNode.toString().replace("data:image/png;base64,", "");
   fetch("http://127.0.0.1:5000/photo", {
     method: "POST",
-    body: JSON.stringify({ base64: buf })
+    body: data
   }).then(() => {
     alert("screenshot sended sucessfully");
     
@@ -146,18 +147,6 @@ const CaptureImg = async () => {stopStreaming();
    
   }).catch(e=>console.log('error :',e));
 };
-
-
-
-
-
-
-
-
-
-
-
-
   return (<>
     
 

@@ -1,15 +1,15 @@
 import React, { useEffect,memo } from "react";
 import { Typography, Paper, Button, Stack, Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import Truck from '../../Images/Truck.png'
-import Captured from '../../Images/Captured.png'
+import Truck from '../../Images/truck2.png'
+import Captured from '../../Images/camera1.png'
 import "./Intro.css";
 const Front = () => {const Image1 = React.memo(function Image() {
   return <img
   src={Captured}
   alt="Captured"
   className="images"
-  style={{ width: "100%" ,transform: 'scaleX(-1)'}}
+  style={{ width: "40%" ,transform: 'scaleX(-1)',}}
 
 />
 });
@@ -62,7 +62,7 @@ const Image2 = React.memo(function Image({ src }) {
           </Typography>
         </Grid>
         <Grid item md={8} xs={12}>
-          <Grid container mb={{ sm: 8, xs: 2 }} justifyContent="space-around">
+          <Grid container mb={{ sm: 8, xs: 2 }} justifyContent="space-around" float='bottom'>
             <Grid item sm={5} mx={{ sm: 0, xs: 4 }} >
              <Image1 />
             </Grid>
