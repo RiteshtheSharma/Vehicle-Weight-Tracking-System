@@ -19,7 +19,7 @@ const Image2 = React.memo(function Image({ src }) {
   src={Truck}
   alt="Truck"
   className="images"
-  style={{ width: "100%" ,objectFit: 'cover',backgroundColor:'#0299E3'}}
+  style={{ width: "100%" ,objectFit: 'cover'}}
   
 />
 });
@@ -29,7 +29,7 @@ const Image2 = React.memo(function Image({ src }) {
     <>
     
       <Grid container py={10} justifyContent="space-between" flexWrap="wrap" mt={8}>
-        <Grid item md={4} xs={12} sx={{paddingLeft:{md:'2vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'}}}>
+        <Grid item md={4} xs={12} sx={{paddingLeft:{md:'3vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'},paddingTop:{md:'5vh'}}}>
           <Typography
             variant="h2"
             sx={{ fontWeight: "700" }}
