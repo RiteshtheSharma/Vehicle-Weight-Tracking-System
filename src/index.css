@@ -72,7 +72,7 @@ code {
 }
 @media only screen and (max-width: 599px){
   #imgCamera{
-    padding-top: 0;
+    padding: 0;
     width:100%
   }
 }
