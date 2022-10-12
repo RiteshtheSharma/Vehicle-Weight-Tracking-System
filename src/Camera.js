@@ -152,7 +152,7 @@ const CaptureImg = async () => {stopStreaming();
   }).then(res=>res.json()).then((res) => {console.log(res['Number Plate'],' test')
     alert("screenshot sended sucessfully");
     
-    startStreaming();
+    stopStreaming();
     setShowCapture(false);
     setImgNode('');
    navigate('/response',{state: res['Number Plate'] })
