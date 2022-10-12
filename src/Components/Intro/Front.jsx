@@ -9,7 +9,8 @@ const Front = () => {const Image1 = React.memo(function Image() {
   src={Captured}
   alt="Captured"
   className="images"
-  style={{ width: "40%" ,transform: 'scaleX(-1)',}}
+  id='imgCamera'
+
 
 />
 });

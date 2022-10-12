@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
 import {Buffer} from 'buffer';
 import { ContactlessOutlined } from "@mui/icons-material";
+import { calculateNewValue } from "@testing-library/user-event/dist/utils";
+import { TextField } from "@mui/material";
 // const videoConstraints = {
 //   width: 540,
 //   facingMode: "environment"
@@ -11,6 +13,11 @@ import { ContactlessOutlined } from "@mui/icons-material";
 
 const Camera = () => {
   const [ImgNode, setImgNode] = useState('')
+  const [NoPlate, setNoPlate] = useState('Enter Number Plate')
+  const updateNoPlate = (e)=>{setNoPlate(e)
+  
+  
+  }
   let btnStart =useRef(0);
   const navigate = useNavigate();
   let btnCapture = useRef(0);
@@ -137,14 +144,18 @@ const CaptureImg = async () => {stopStreaming();
   var data = ImgNode.toString().replace("data:image/png;base64,", "");
   fetch("http://127.0.0.1:5000/photo", {
     method: "POST",
+    headers:{ 
+      "textfield":
+      NoPlate
+    },
     body: data
-  }).then(() => {
+  }).then(res=>res.json()).then((res) => {console.log(res['Number Plate'],' test')
     alert("screenshot sended sucessfully");
     
     startStreaming();
-    ShowCapture(false);
+    setShowCapture(false);
     setImgNode('');
-   
+   navigate('/response',{state: res['Number Plate'] })
   }).catch(e=>console.log('error :',e));
 };
   return (<>
@@ -156,14 +167,17 @@ const CaptureImg = async () => {stopStreaming();
     
  
  
-<div className="play-area-sub" style={{minWidth:'100%',minHeight:'67.5%',padding:'70px 0'}}  >
-<video id="stream" ref={stream}  className={ShowCapture?"zero":''} style={{width:'90vw'}}></video>
+<div className="play-area-sub" style={{minWidth:'100%',minHeight:'67.5%',padding:'10px 0'}}  >
+<video id="stream" ref={stream}  className={ShowCapture?"zero":''} style={{height:'calc(100vh - 170px)',maxWidth:'100vw'}}></video>
      
 <canvas id="capture" width="320" height="240" ref={capture} />
       { ImgNode.length>0 &&  
     <Box id="snapshot" width="320" height="240" ref={snapshot} className={ShowCapture?'':"zero"} style={{width:'100%'}} >
-     <img src={ImgNode} style={{width:'90vw',margin:'auto'}} alt='' /></Box>}
+     <img src={ImgNode} style={{margin:'auto',height:'calc(100vh - 170px)',maxWidth:'100vw'}} alt='' /></Box>}
    </div>
+   <Box m={1}>
+   <TextField id="outlined-basic" label="Number Plate" variant="outlined" fullWidth value={NoPlate} onChange={(e)=>{updateNoPlate(e.target.value)}}/>
+   </Box>
   <div className="button-group">
   <button id="btn-start" type="button" className="button" ref = {btnStart} onClick={startStreaming} disabled={!ShowCapture}>Recapture</button>
   <button id="btn-capture" type="button" className="button" ref={ btnCapture} onClick={captureSnapshot} disabled={ShowCapture}>Capture Image</button>

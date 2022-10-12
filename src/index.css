@@ -58,11 +58,20 @@ code {
   padding:0 5em;
   position:fixed
 }
-
+#imgCamera{
+  padding-top: 60%;
+  width: 40% ;transform: scaleX(-1)
+}
 @media only screen and (max-width: 900px){
   .slider-b{
     width: 9vw;
     padding: 0;
     display:flex;
   justify-content: center;  }
+}
+@media only screen and (max-width: 599px){
+  #imgCamera{
+    padding-top: 0;
+    width:100%
+  }
 }
