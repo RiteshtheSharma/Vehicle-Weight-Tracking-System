@@ -10,7 +10,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import {motion} from 'framer-motion/dist/framer-motion';
 import axios from 'axios';
 
 const Response = () => {
@@ -31,7 +31,12 @@ useEffect(() => {
  
 }, [])
 
-  return (
+  return (<motion.div
+    initial={{height:0,display:'none'}}
+    animate={{height:'100%',display:'block',transition:{duration:0.5}}}
+    exit={{y:window.innerHeight}}
+    
+    >
     <Stack >
 
     <Stack sx={{margin:{sm:'100px 3vw',xs:'60px auto'}}}>
@@ -73,7 +78,7 @@ useEffect(() => {
     }
 
     </Stack>
-    </Stack>
+    </Stack></motion.div>
   )
 }
 

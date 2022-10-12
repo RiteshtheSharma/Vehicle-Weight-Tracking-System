@@ -6,6 +6,7 @@ import {Buffer} from 'buffer';
 import { ContactlessOutlined } from "@mui/icons-material";
 import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 import { TextField } from "@mui/material";
+import {motion} from 'framer-motion/dist/framer-motion';
 // const videoConstraints = {
 //   width: 540,
 //   facingMode: "environment"
@@ -162,7 +163,12 @@ const CaptureImg = async () => {stopStreaming();
     
 
 {/* <!-- Video Element & Canvas --> */}
-
+<motion.div
+     initial={{height:0}}
+     animate={{height:'100%',display:'block',transition:{duration:0.5}}}
+     exit={{y:window.innerHeight}}
+     
+     >
 
     
  
@@ -183,7 +189,7 @@ const CaptureImg = async () => {stopStreaming();
   <button id="btn-capture" type="button" className="button" ref={ btnCapture} onClick={captureSnapshot} disabled={ShowCapture}>Capture Image</button>
   <Link to='/' style={{textDecoration:'none',color:'black'}} onClick={(e)=>{e.preventDefault();stopStreaming(); setTimeout(()=>navigate('/'),1000);}}><button id="btn-stop" type="button" className="button"  >Back</button></Link>
   <button id="btn-sub" type="button" className="button" onClick={CaptureImg} disabled={!ShowCapture}>Submit</button>
-  </div></>
+  </div></motion.div></>
   );
 };
 
