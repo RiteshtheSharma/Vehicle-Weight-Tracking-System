@@ -19,7 +19,8 @@ const Image2 = React.memo(function Image({ src }) {
   src={Truck}
   alt="Truck"
   className="images"
-  style={{ width: "100%" ,objectFit: 'cover'}}
+  style={{ width: "100%" ,objectFit: 'cover',backgroundColor:'#0299E3'}}
+  
 />
 });
 
@@ -28,31 +29,27 @@ const Image2 = React.memo(function Image({ src }) {
     <>
     
       <Grid container py={10} justifyContent="space-between" flexWrap="wrap" mt={8}>
-        <Grid item md={4} xs={12}>
+        <Grid item md={4} xs={12} sx={{paddingLeft:{md:'2vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'}}}>
           <Typography
             variant="h2"
             sx={{ fontWeight: "700" }}
             fontSize={{
               xs: "30px",
-              sm: "19px",
+              sm: "40px",
               md: "22px",
               lg: "32px"
             }}
             gutterBottom
-            mx={{
-              xs: 4
-            }}
+            
           >
             Vehicle Weight Tracking System
           </Typography>
           <Typography
-            pl={{
-              xs: 4
-            }}
+           
             variant="h6"
             fontSize={{
               xs: "18px",
-              sm: "13px",
+              sm: "20px",
               md: "15px",
               lg: "22px"
             }}

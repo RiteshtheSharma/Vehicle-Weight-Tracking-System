@@ -103,18 +103,7 @@ const MyDropdown = () => (
         >
           <CameraIcon />
         </IconButton>
-        <Link
-                  to="/"
-                  style={{flexGrow: 1, display: { xs: 'block' ,cursor:'pointer'}, textDecoration: "none", color: "white" }}
-                >
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, display: { xs: 'block' ,cursor:'pointer'} }}
-        >
-     
-          MUI
-        </Typography></Link>
+      
 
         <Box sx={{ display: {  sm: 'block',xs:'none' } }}>
           {navItems.map((item) => (
@@ -133,7 +122,8 @@ const MyDropdown = () => (
           edge="start"
           
 
-          sx={{ ml: 2, display: { sm: 'none' }}}
+          sx={{ ml: 2, display: { sm: 'none' },textAlign:'end',position: 'absolute',
+    right: '0'}}
         >
           <MenuIcon onClick={toggleDrawer( !state)} sx={{zIndex:'100'}} />
         </IconButton>
