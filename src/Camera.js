@@ -13,7 +13,7 @@ import { TextField } from "@mui/material";
 
 const Camera = () => {
   const [ImgNode, setImgNode] = useState('')
-  const [NoPlate, setNoPlate] = useState('Enter Number Plate')
+  const [NoPlate, setNoPlate] = useState('')
   const updateNoPlate = (e)=>{setNoPlate(e)
   
   
