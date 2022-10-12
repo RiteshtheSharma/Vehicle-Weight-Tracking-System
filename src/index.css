@@ -60,6 +60,7 @@ code {
 }
 #imgCamera{
   padding-top: 60%;
+  padding-right: 40%;
   width: 40% ;transform: scaleX(-1)
 }
 @media only screen and (max-width: 900px){
