@@ -14,18 +14,18 @@ import {motion} from 'framer-motion/dist/framer-motion';
 import axios from 'axios';
 
 const Response = () => {
-    const {state} = useLocation();
-    const Number_Plate = state;
+    const {Number_Plate,Weight} = useLocation().state;
+    
     const navigate = useNavigate();
 const [VehicleInfo, setVehicleInfo] = useState(null)
 
 useEffect(() => {
-    console.log(Number_Plate,' in response ')
+    console.log(Number_Plate,Weight,' in response ')
     if(Number_Plate == null) navigate('/')
   axios.post('http://127.0.0.1:5000/vehicle_information',{"Number_Plate" :Number_Plate}).then(
    
     resp=>{
-        setVehicleInfo({...resp.data});console.table(VehicleInfo,'vehicle info');}
+        setVehicleInfo({...resp.data});console.table(resp.data,'vehicle info');}
   )
    
  
@@ -66,7 +66,7 @@ useEffect(() => {
           {Object.keys(VehicleInfo).map((k,i) => (
             <TableRow key={i}>
              
-              <TableCell  align="left" style={{margin:'auto'}} ><Typography color={k==='Panelty'?(VehicleInfo[k]>0?'error.main':'success.main'):'text.primary'} >{k}</Typography></TableCell>
+              <TableCell  align="left" style={{margin:'auto'}} ><Typography color={k==='Penalties'?(VehicleInfo[k]>0?'error.main':'success.main'):'text.primary'} >{k}</Typography></TableCell>
               <TableCell align="left"  style={{margin:'auto'}}><Typography >{VehicleInfo[k]}</Typography></TableCell>
               
             </TableRow>

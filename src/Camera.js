@@ -150,13 +150,13 @@ const CaptureImg = async () => {stopStreaming();
       NoPlate
     },
     body: data
-  }).then(res=>res.json()).then((res) => {console.log(res['Number Plate'],' test')
+  }).then(res=>res.json()).then((res) => {console.log(res['Weight'],' test')
     alert("screenshot sended sucessfully");
     
     stopStreaming();
     setShowCapture(false);
     setImgNode('');
-   navigate('/response',{state: res['Number Plate'] })
+   navigate('/response',{state: {Number_Plate:res['Number Plate'],Weight:res['Weight'] }})
   }).catch(e=>console.log('error :',e));
 };
   return (<>
