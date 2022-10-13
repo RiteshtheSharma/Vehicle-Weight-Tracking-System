@@ -48,7 +48,7 @@ useEffect(() => {
        Vehicle Information
     </Typography>
     </Stack>
-    <Stack m={4}>
+    <Stack mx={4} mb={4}>
     {VehicleInfo &&
     
         <TableContainer component={Paper}>

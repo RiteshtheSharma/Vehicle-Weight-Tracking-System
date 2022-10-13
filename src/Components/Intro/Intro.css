@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
 }
+.background{
+  background: url('../../Images/background.jpg') no-repeat ;
+  background-size: cover;
+}
 .images {
   width: 30vw;
 }

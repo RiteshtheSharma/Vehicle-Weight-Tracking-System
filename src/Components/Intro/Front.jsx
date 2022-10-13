@@ -29,15 +29,15 @@ const Image2 = React.memo(function Image({ src }) {
     <>
     
       <Grid container py={10} justifyContent="space-between" flexWrap="wrap" mt={8}>
-        <Grid item md={4} xs={12} sx={{paddingLeft:{md:'3vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'},paddingTop:{md:'5vh'}}}>
+        <Grid item md={6} xs={12} sx={{paddingLeft:{md:'3vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'},paddingTop:{md:'15vh'}}}>
           <Typography
             variant="h2"
             sx={{ fontWeight: "700" }}
             fontSize={{
               xs: "30px",
               sm: "40px",
-              md: "22px",
-              lg: "32px"
+              md: "36px",
+              lg: "50px"
             }}
             gutterBottom
             
@@ -59,7 +59,7 @@ const Image2 = React.memo(function Image({ src }) {
             Using Image Processing
           </Typography>
         </Grid>
-        <Grid item md={8} xs={12}>
+        <Grid item md={6} xs={12}>
           <Grid container mb={{ sm: 8, xs: 2 }} justifyContent="space-around" float='bottom'>
             <Grid item sm={5} mx={{ sm: 0, xs: 4 }} >
              <Image1 />
@@ -74,7 +74,7 @@ const Image2 = React.memo(function Image({ src }) {
                   to="/img_capture"
                   style={{ textDecoration: "none", color: "white" }}
                 >
-              <Button variant="contained" fullWidth>
+              <Button variant="contained" fullWidth size='large' >
                 {/*
       comment link section only when working in this section with codesandbox as 
       babel compiles the present jsx page in codesandbox as opposed to local machine
@@ -91,7 +91,7 @@ const Image2 = React.memo(function Image({ src }) {
               <Button
                 variant="contained"
                 fullWidth
-                
+                size='large'
               >
                 Know about this app
               </Button></Link>

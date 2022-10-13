@@ -173,15 +173,15 @@ const CaptureImg = async () => {stopStreaming();
     
  
  
-<div className="play-area-sub" style={{minWidth:'100%',minHeight:'67.5%',padding:'10px 0'}}  >
-<video id="stream" ref={stream}  className={ShowCapture?"zero":''} style={{height:'calc(100vh - 170px)',maxWidth:'100vw'}}></video>
+<div className="play-area-sub" style={{minWidth:'100%',minHeight:'67.5%',paddingBottom:'5px'}}  >
+<video id="stream" ref={stream}  className={ShowCapture?"zero":''} style={{height:'calc(100vh - 120px)',maxWidth:'100vw'}}></video>
      
-<canvas id="capture" width="320" height="240" ref={capture} />
+<canvas id="capture" width="320" height="240" ref={capture} style={{height:'calc(100vh - 120px)',maxWidth:'100vw'}}/>
       { ImgNode.length>0 &&  
     <Box id="snapshot" width="320" height="240" ref={snapshot} className={ShowCapture?'':"zero"} style={{width:'100%'}} >
-     <img src={ImgNode} style={{margin:'auto',height:'calc(100vh - 170px)',maxWidth:'100vw'}} alt='' /></Box>}
+     <img src={ImgNode} style={{margin:'auto',height:'calc(100vh - 120px)',maxWidth:'100vw'}} alt='' /></Box>}
    </div>
-   <Box m={1}>
+   <Box m={1} sx={{width:'50%',margin:'auto'}}>
    <TextField id="outlined-basic" label="Number Plate" variant="outlined" fullWidth value={NoPlate} onChange={(e)=>{updateNoPlate(e.target.value)}}/>
    </Box>
   <div className="button-group">

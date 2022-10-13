@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:#fff9f9
+   background-color:rgb(229, 228, 228);
 }
 
 code {
@@ -14,17 +14,17 @@ code {
 }
 
 .button-group, .play-area {
-  border: 2px solid grey;
-  padding: 1em 1%;
+  /* border: 2px solid grey; */
+  padding: 0.4em 1%;
  
   position: relative;
     bottom: 0;
     width:97%;
     margin:auto
 }
-.button-group{
+.button-group{width:50%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .button {
   padding: 0.5em;
@@ -61,7 +61,7 @@ code {
 #imgCamera{
   padding-top: 60%;
   padding-right: 40%;
-  width: 40% ;transform: scaleX(-1)
+  width: 50% ;transform: scaleX(-1)
 }
 @media only screen and (max-width: 900px){
   .slider-b{

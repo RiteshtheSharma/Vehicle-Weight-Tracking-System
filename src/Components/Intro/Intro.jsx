@@ -13,7 +13,7 @@ const Intro = () => {
      initial={{height:0}}
      animate={{height:'100%',display:'block',transition:{duration:0.5}}}
      exit={{y:window.innerHeight}}
-     
+     className='background'
      >
       <ThemeProvider theme={theme}>
      
