@@ -3,13 +3,12 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Slide from '@mui/material/Slide';
 import PropTypes from 'prop-types';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import CameraIcon from '@mui/icons-material/Camera';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
@@ -28,7 +27,7 @@ function HideOnScroll(props) {
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
-
+ 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       {children}
@@ -44,9 +43,9 @@ HideOnScroll.propTypes = {
    */
   window: PropTypes.func,
 };
-export const Header = (props) => {const navItems = [['Home','/'], ['About','about'], ['Capture','img_capture']];
+export const Header = (props) => {
 const [state, setState] = React.useState(false);
-
+const navigate = useNavigate();
 const toggleDrawer = ( open) => (event) => {
   if (
     event &&
@@ -69,26 +68,66 @@ const MyDropdown = () => (
     // onKeyDown={toggleDrawer( false)}
   >
     <List sx={{marginTop:'64px'}}>
-      {navItems.map((text, index) => (
-        <ListItem key={text[0]} disablePadding>
+
+   <ListItem  disablePadding>
+
         <Link
-                  to={text[1]}
+       
+                  to='/'
                   style={{textDecoration: "none", color: "#7F7F7F" }}
+                  
                 >
-          <ListItemButton>
+          <ListItemButton >
             <ListItemIcon>
                <Brightness1Icon /> 
 
             </ListItemIcon>
-            <ListItemText primary={text[0]} />
+            <ListItemText primary='Home' />
           </ListItemButton>
           </Link>
+      
         </ListItem>
-      ))}
+
+        <ListItem disablePadding>
+
+
+  <ListItemButton onClick={(e)=>{ 
+    
+    // scroll()
+    navigate('/',{state:{ScrollVal:undefined}}) }}>
+    <ListItemIcon>
+       <Brightness1Icon /> 
+
+    </ListItemIcon>
+    <ListItemText primary='About' />
+  </ListItemButton>
+  
+
+</ListItem>
+
+<ListItem disablePadding>
+
+<Link
+
+          to='img_capture'
+          style={{textDecoration: "none", color: "#7F7F7F" }}
+          
+        >
+  <ListItemButton >
+    <ListItemIcon>
+       <Brightness1Icon /> 
+
+    </ListItemIcon>
+    <ListItemText primary='Capture' />
+  </ListItemButton>
+  </Link>
+
+</ListItem>
     </List>
     
   </Box> 
 );
+
   return (
     <HideOnScroll {...props} sx={{zIndex:'100'}}>
     <AppBar component="nav" xs={8}>
@@ -106,15 +145,27 @@ const MyDropdown = () => (
       
 
         <Box sx={{ display: {  sm: 'block',xs:'none' } }}>
-          {navItems.map((item) => (
-            <Link
-                  to={item[1]}
+     
+          <Link
+                  to='/'
                   style={{textDecoration: "none", color: "white" }}
                 >
-            <Button key={item[0]} sx={{ color: '#fff' }}>
-              {item[0]}
+            <Button  sx={{ color: '#fff' }}>
+            Home
             </Button></Link>
-          ))}
+           
+            <Button key='About' sx={{ color: '#fff' }} onClick={(e)=>{navigate('/');setTimeout(()=>{ window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })},1000)}}>
+            About
+            </Button>
+            <Link
+                  to='img_capture'
+                  style={{textDecoration: "none", color: "white" }}
+                >
+            <Button  sx={{ color: '#fff' }}>
+            Capture
+            </Button></Link>
+
+
         </Box>
         <IconButton
           color="inherit"

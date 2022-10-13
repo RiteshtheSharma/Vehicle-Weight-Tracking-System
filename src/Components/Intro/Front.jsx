@@ -1,10 +1,13 @@
-import React, { useEffect,memo } from "react";
+import React, { useEffect,memo,useRef } from "react";
 import { Typography, Paper, Button, Stack, Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import Truck from '../../Images/truck2.png'
 import Captured from '../../Images/camera1.png'
 import "./Intro.css";
-const Front = () => {const Image1 = React.memo(function Image() {
+const Front = ({onClickFunc}) => {
+  
+  const divRef = useRef();
+  const Image1 = React.memo(function Image() {
   return <img
   src={Captured}
   alt="Captured"
@@ -28,7 +31,7 @@ const Image2 = React.memo(function Image({ src }) {
   return (
     <>
     
-      <Grid container py={10} justifyContent="space-between" flexWrap="wrap" mt={8} sx={{width:'100%'}}>
+      <Grid ref={divRef} container py={10} justifyContent="space-between" flexWrap="wrap" mt={8} sx={{width:'100%',minHeight: '100vh'}}  className='background'>
         <Grid item md={6} xs={12} sx={{paddingLeft:{md:'3vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'},paddingTop:{md:'15vh'}}}>
           <Typography
             variant="h2"
@@ -87,14 +90,15 @@ const Image2 = React.memo(function Image({ src }) {
               </Button> </Link>
             </Grid>
             <Grid item sm={5} xs={12}>
-            <Link  to='/about' style={{textDecoration:'none',color:'black'}}>
+           
               <Button
                 variant="contained"
                 fullWidth
                 size='large'
+                onClick={()=>{onClickFunc()}}
               >
                 Know about this app
-              </Button></Link>
+              </Button>
             </Grid>
           </Grid>
         </Grid>

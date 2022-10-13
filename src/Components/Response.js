@@ -31,12 +31,7 @@ useEffect(() => {
  
 }, [])
 
-  return (<motion.div
-    initial={{height:0,display:'none'}}
-    animate={{height:'100%',display:'block',transition:{duration:0.5}}}
-    exit={{y:window.innerHeight}}
-    
-    >
+  return (
     <Stack >
 
     <Stack sx={{margin:{sm:'100px auto',xs:'60px auto'}}}>
@@ -78,7 +73,7 @@ useEffect(() => {
     }
 
     </Stack>
-    </Stack></motion.div>
+    </Stack>
   )
 }
 

@@ -52,11 +52,12 @@ code {
 .slider-b:hover,.stopSlide{opacity:0.6 !important
 }
 .slider-b{
-  transition: all 0.5s linear;
+  transition: opacity 0.5s linear;
   height:100%;
   background-color:black;
   padding:0 5em;
-  position:fixed
+  position:absolute;
+  
 }
 #imgCamera{
   padding-top: 60%;

@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Box,Stack } from '@mui/system';
-import {motion} from 'framer-motion/dist/framer-motion';
+
 import Modules from './Module';
 const Data =[{head:'Introduction',list:[['TOOLS / TECHNOLOGIES TO BE USED','',['React JS','MongoDB Atlas','Flask','Camera','Vscode']],['PROJECT MODULES','',['Image processing','Database ','Backend','Api creation','Frontend (React JS) ']],['TEAM MEMBER DETAILS','',['Ritesh Sharma','Saurabh Pareek ']]],content:'Vehicle weight tracking system is an application to track vehicle weight and get vehicle details by reading number plate through camera. Road safety measures are checked for the vehicle.'},
 {head:'TOOLS / TECHNOLOGIES TO BE USED',list:[['React JS','',['Software','Version 18.8','For creating graphical user interface and frontend']],['MongoDB Atlas','',['Software (cloud database )','Version 6.0.1','For database']],['Flask','',['Software','Version 2.2.2','For backend and image processing']],['Camera','',['Hardware','For capturing the image']],['Vscode','',['Software (source-code editor)','Version 1.72.0','For smooth project building']]],content:'Tools and Technologies used are described by their version, purpose of use and whether it is s/w or h/w'}
@@ -38,21 +38,17 @@ const Slider = () => {const [Index, setIndex] = useState(0)
     if(Index >0)
     setIndex(Index-1)
   }
-  
+
+
   return (
-    <motion.div
-     initial={{height:0}}
-     animate={{height:'100%',display:'block',transition:{duration:1}}}
-     exit={{y:window.innerHeight}}
-     
-     >
-    <Stack direction='row' >
+   
+    <Stack direction='row' sx={{overflowY: 'scroll',height:'100vh'}} >
     <Box  className={((Index===0)?'slider-b stopSlide':'slider-b')} onClick={Decrement} >
     < ArrowBackIosIcon sx={{height:'100vh',color:'white' }} /></Box>
-     < Modules head={Data[Index].head} list={Data[Index].list} content={Data[Index].content}/>
+     <Box >< Modules head={Data[Index].head} list={Data[Index].list} content={Data[Index].content}/></Box>
       <Box sx={{right:'0'}} className={((Index===Data.length-1)?'stopSlide slider-b':'slider-b')} onClick={Increment}><ArrowForwardIosIcon sx={{height:'100vh',color:'white',margin:'auto'}}  /></Box>
   
-  </Stack></motion.div>
+  </Stack>
   )
 }
 
