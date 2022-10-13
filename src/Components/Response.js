@@ -66,8 +66,8 @@ useEffect(() => {
           {Object.keys(VehicleInfo).map((k,i) => (
             <TableRow key={i}>
              
-              <TableCell  align="left" style={{margin:'auto'}} ><Typography color={k==='Penalties'?(VehicleInfo[k]>0?'error.main':'success.main'):'text.primary'} >{k}</Typography></TableCell>
-              <TableCell align="left"  style={{margin:'auto'}}><Typography >{VehicleInfo[k]}</Typography></TableCell>
+              <TableCell  align="left" style={{margin:'auto'}} ><Typography color={k==='Message'?(VehicleInfo['Penalties']>0?'error.main':'success.main'):'text.primary'} >{k}</Typography></TableCell>
+              <TableCell align="left"  style={{margin:'auto'}}><Typography color={k==='Message'?(VehicleInfo['Penalties']>0?'error.main':'success.main'):'text.primary'} >{VehicleInfo[k]}</Typography></TableCell>
               
             </TableRow>
           ))}
