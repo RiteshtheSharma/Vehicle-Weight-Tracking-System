@@ -12,7 +12,7 @@ const Intro = () => {
    
      <motion.div
      initial={{height:0}}
-     animate={{height:`calc(${window.innerHeight}px - 64px )`,display:'block',transition:{duration:1}}}
+     animate={{height:`calc(${window.innerHeight}px - 64px )`,display:'block',transition:{duration:0.5}}}
      exit={{y:window.innerHeight}}
      className='background'
      
