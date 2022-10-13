@@ -2,14 +2,15 @@
   margin: 0;
   padding: 0;
 }
-.background{
-  background: url('../../Images/background.jpg') no-repeat ;
-  background-size: cover;
-}
+
 .images {
   width: 30vw;
 }
-
+.background{
+  background: url('../../Images/background.jpg') no-repeat ;
+  background-size: cover;
+  height: inherit;
+}
 @media only screen and (max-width: 600px) {
   .images {
     width: 47vw;

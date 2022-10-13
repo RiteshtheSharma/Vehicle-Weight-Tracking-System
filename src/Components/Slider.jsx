@@ -42,7 +42,7 @@ const Slider = () => {const [Index, setIndex] = useState(0)
   return (
     <motion.div
      initial={{height:0}}
-     animate={{height:'100%',display:'block',transition:{duration:0.5}}}
+     animate={{height:'100%',display:'block',transition:{duration:1}}}
      exit={{y:window.innerHeight}}
      
      >

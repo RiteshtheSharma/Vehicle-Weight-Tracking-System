@@ -39,7 +39,7 @@ useEffect(() => {
     >
     <Stack >
 
-    <Stack sx={{margin:{sm:'100px 3vw',xs:'60px auto'}}}>
+    <Stack sx={{margin:{sm:'100px auto',xs:'60px auto'}}}>
     <Typography variant='h3' fontWeight='800'  fontSize={{
               xs: "30px",
               sm: "40px",

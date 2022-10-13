@@ -28,7 +28,7 @@ const Image2 = React.memo(function Image({ src }) {
   return (
     <>
     
-      <Grid container py={10} justifyContent="space-between" flexWrap="wrap" mt={8}>
+      <Grid container py={10} justifyContent="space-between" flexWrap="wrap" mt={8} sx={{width:'100%'}}>
         <Grid item md={6} xs={12} sx={{paddingLeft:{md:'3vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'},paddingTop:{md:'15vh'}}}>
           <Typography
             variant="h2"

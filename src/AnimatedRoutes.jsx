@@ -7,7 +7,8 @@ import Intro from "./Components/Intro/Intro";
 import {AnimatePresence} from 'framer-motion/dist/framer-motion';
 const AnimatedRoutes = () => {const location = useLocation();
   return (
-    <AnimatePresence>
+    <AnimatePresence
+    >
     <Routes  location={location} key={location.pathname}><Route path="/" element={<Intro />} />
     <Route path='response' element={<Response />}></Route>
     <Route path="img_capture" element={<Camera />} />
