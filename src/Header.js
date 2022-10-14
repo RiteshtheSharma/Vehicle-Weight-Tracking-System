@@ -154,7 +154,7 @@ const MyDropdown = () => (
             Home
             </Button></Link>
            
-            <Button key='About' sx={{ color: '#fff' }} onClick={(e)=>{navigate('/');setTimeout(()=>{ window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })},1000)}}>
+            <Button key='About' sx={{ color: '#fff' }} onClick={(e)=>{navigate('/');setTimeout(()=>{ window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })},200)}}>
             About
             </Button>
             <Link

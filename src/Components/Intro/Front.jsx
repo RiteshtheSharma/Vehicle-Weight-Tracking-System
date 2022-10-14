@@ -31,8 +31,8 @@ const Image2 = React.memo(function Image({ src }) {
   return (
     <>
     
-      <Grid ref={divRef} container py={10} justifyContent="space-between" flexWrap="wrap" mt={8} sx={{width:'100%',minHeight: '100vh'}}  className='background'>
-        <Grid item md={6} xs={12} sx={{paddingLeft:{md:'3vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'},paddingTop:{md:'15vh'}}}>
+      <Grid ref={divRef} container pt={20} justifyContent="space-between" flexWrap="wrap"  sx={{width:'100%',minHeight: '100vh'}}  className='background'>
+        <Grid item md={6} xs={12} sx={{paddingLeft:{md:'5vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'},paddingTop:{md:'15vh'}}}>
           <Typography
             variant="h2"
             sx={{ fontWeight: "700",color:"white" }}
