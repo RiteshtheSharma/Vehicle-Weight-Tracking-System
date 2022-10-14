@@ -54,8 +54,8 @@ code {
 .slider-b{
   transition: opacity 0.5s linear;
   height:100%;
-  background-color:black;
-  padding:0 4em;
+  background-color:rgb(3, 36, 74);
+  padding:0 0.5cm;
   position:absolute;
   
 }

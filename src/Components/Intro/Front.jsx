@@ -35,7 +35,7 @@ const Image2 = React.memo(function Image({ src }) {
         <Grid item md={6} xs={12} sx={{paddingLeft:{md:'3vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'},paddingTop:{md:'15vh'}}}>
           <Typography
             variant="h2"
-            sx={{ fontWeight: "700" }}
+            sx={{ fontWeight: "700",color:"white" }}
             fontSize={{
               xs: "30px",
               sm: "40px",
