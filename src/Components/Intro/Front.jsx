@@ -1,5 +1,5 @@
-import React, { useEffect,memo,useRef } from "react";
-import { Typography, Paper, Button, Stack, Box, Grid } from "@mui/material";
+import React, { memo,useRef } from "react";
+import { Typography,  Button,  Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import Truck from '../../Images/truck2.png'
 import Captured from '../../Images/camera1.png'

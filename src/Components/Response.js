@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box,Stack,Typography } from '@mui/material'
+import { Stack,Typography } from '@mui/material'
 import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
 import { useEffect ,useState} from 'react';
@@ -10,7 +10,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {motion} from 'framer-motion/dist/framer-motion';
 import axios from 'axios';
 
 const Response = () => {

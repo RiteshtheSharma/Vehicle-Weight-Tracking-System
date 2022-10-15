@@ -2,9 +2,6 @@ import React, { useRef,useEffect,useState, memo  } from "react";
 import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
-import {Buffer} from 'buffer';
-import { ContactlessOutlined } from "@mui/icons-material";
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 import { TextField } from "@mui/material";
 
 // const videoConstraints = {
@@ -52,7 +49,10 @@ const Camera = () => {
   
         stream.current.srcObject = mediaStream;
   
-        stream.current.play();
+        stream.current.play().catch((e)=>{
+          // alert('some error encountered while streaming');
+          console.log(e);
+       });
 
       })
       .catch( function( err ) {
@@ -169,12 +169,12 @@ const CaptureImg = async () => {stopStreaming();
  
  
 <div className="play-area-sub" style={{minWidth:'100%',minHeight:'67.5%',paddingBottom:'5px'}}  >
-<video id="stream" ref={stream}  className={ShowCapture?"zero":''} id='capturedimg'></video>
+<video id="stream" ref={stream}  className={ShowCapture?"zero capturedimg":'capturedimg'}></video>
      
-<canvas id="capture" width="320" height="240" ref={capture} style={{height:'calc(100vh - 184px)',}}/>
+<canvas id="capture" width="320" height="240" ref={capture} />
       { ImgNode.length>0 &&  
     <Box id="snapshot" ref={snapshot} className={ShowCapture?'':"zero"}  >
-     <img src={ImgNode}  alt='' id='capturedimg' /></Box>}
+     <img src={ImgNode}  alt='' className='capturedimg' /></Box>}
    </div>
    <Box m={1} sx={{width:{md:'50%',xs:'70%'},margin:'auto'}} id='NoplateText'>
    <TextField id="outlined-basic" label="Number Plate" variant="outlined" fullWidth value={NoPlate} onChange={(e)=>{updateNoPlate(e.target.value)}}/>
