@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
    background-color:rgb(229, 228, 228);
+   
 }
 
 code {
@@ -67,9 +68,9 @@ code {
 }
 
 #capturedimg{
-  margin:0 auto;
+  margin:auto;
   height:calc(100vh - 120px);
-
+ 
 }
 
 @media only screen and (max-width: 900px){
@@ -84,9 +85,14 @@ code {
 }
 
 @media only screen and (max-width: 599px){
-
+  #capturedimg {
+    height : 75vw  ;
+  }
+ 
   .button-group,#NoplateText{
     width:97%;
   }
- 
+  .button-group{
+    position:absolute
+  }
 } 
