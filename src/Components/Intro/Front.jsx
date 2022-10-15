@@ -22,7 +22,8 @@ const Image2 = React.memo(function Image({ src }) {
   src={Truck}
   alt="Truck"
   className="images"
-  style={{ width: "100%" ,objectFit: 'cover'}}
+  id='Truck'
+ 
   
 />
 });
@@ -31,7 +32,7 @@ const Image2 = React.memo(function Image({ src }) {
   return (
     <>
     
-      <Grid ref={divRef} container pt={20} justifyContent="space-between" flexWrap="wrap"  sx={{width:'100%',minHeight: '100vh'}}  className='background'>
+      <Grid ref={divRef} container pt={20} pb={5} justifyContent="space-between" flexWrap="wrap"  sx={{width:'100%',minHeight: '100vh'}}  className='background'>
         <Grid item md={6} xs={12} sx={{paddingLeft:{md:'5vw',xs:'5vw'},paddingRight:{md:'0',xs:'5vw'},paddingTop:{md:'15vh'}}}>
           <Typography
             variant="h2"
@@ -63,11 +64,11 @@ const Image2 = React.memo(function Image({ src }) {
           </Typography>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Grid container mb={{ sm: 8, xs: 2 }} justifyContent="space-around" float='bottom'>
-            <Grid item sm={5} mx={{ sm: 0, xs: 4 }} >
+          <Grid container mb={{ sm: 8, xs: 2 }} justifyContent="space-around" >
+            <Grid item sm={5} xs={5}>
              <Image1 />
             </Grid>
-            <Grid item sm={5} m={{ sm: 0, xs: 4 }} >
+            <Grid item sm={5} xs={5}>
              <Image2/>
             </Grid>
           </Grid>

@@ -17,18 +17,18 @@ const Modules = ({head,content,list}) => {
   return (
     <><Typography variant="h3" gutterBottom fontSize={{xs:'30px',sm:'xx-large'}}>{item[0]}</Typography>
     {item[1].length>0 && <Typography variant='h6'>{item[1]}</Typography>}
-    {item[2].length>0 && <List sx={{ width: '100%', maxWidth: 360, }} >
+    {item[2].length>0 && <List sx={{ width: '100%', maxWidth: 360,textAlign: 'justify' }} >
   {item[2].map((value) => (
     <ListItem
       key={value}
       disableGutters
-     
+      sx={{textAlign: 'justify'}}
       
     >
     <ListItemIcon  >
     <LabelIcon/>
     </ListItemIcon>
-      <ListItemText primary={`${value}`}  />
+      <ListItemText sx={{textAlign: 'justify'}} primary={`${value}`}  />
     </ListItem>
   ))}
 </List>

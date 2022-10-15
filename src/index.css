@@ -32,7 +32,7 @@ code {
 }
 
 .play-area-sub {
- width:100%;
+ /* width:100%; */
  padding:10px 0;
   display: inline-block;
   text-align: center;
@@ -66,16 +66,27 @@ code {
   transform: scaleX(-1);
 }
 
+#capturedimg{
+  margin:0 auto;
+  height:calc(100vh - 120px);
+
+}
+
 @media only screen and (max-width: 900px){
   .slider-b{
     width: 9vw;
     padding: 0;
     display:flex;
   justify-content: center;  }
-}
-@media only screen and (max-width: 599px){
-  #imgCamera{
-    padding: 0;
-    width:100%
+  .button-group{
+    width:70vw;
   }
 }
+
+@media only screen and (max-width: 599px){
+
+  .button-group,#NoplateText{
+    width:97%;
+  }
+ 
+} 

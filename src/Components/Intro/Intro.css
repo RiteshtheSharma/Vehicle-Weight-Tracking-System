@@ -11,8 +11,7 @@
   background-size: cover;
   height: inherit;
 }
-@media only screen and (max-width: 600px) {
-  .images {
-    width: 47vw;
-  }
+#Truck{
+   width: 100% ;
 }
+
