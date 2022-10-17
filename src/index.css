@@ -69,8 +69,9 @@ code {
 
 .capturedimg{
   margin:auto;
-  height:calc(100vh - 120px);
- 
+  max-height:calc(100vh - 120px);
+  max-width: 100vw;
+  object-fit: cover;
 }
 
 @media only screen and (max-width: 900px){
@@ -80,22 +81,17 @@ code {
     display:flex;
   justify-content: center;  }
   .button-group{
-    width:70vw;
+  width:70vw;
   }
 }
 
 @media only screen and (max-width: 599px){
-  .capturedimg {
-    height : 75vw  ;
-   
-  }
- 
+  
+  
   .button-group,#NoplateText{
     width:97%;
   }
-  .button-group{
-    position:absolute
-  }
+  
   #modulecontainer *{
     padding:0 1vw ;
   }

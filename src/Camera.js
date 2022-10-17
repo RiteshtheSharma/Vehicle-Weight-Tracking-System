@@ -41,7 +41,7 @@ const Camera = () => {
   
     if( mediaSupport && null == cameraStream.current ) {
   
-      navigator.mediaDevices.getUserMedia( { video: true } )
+      navigator.mediaDevices.getUserMedia( { video: { facingMode: "environment"} } )
       .then( function( mediaStream ) {
         setImgNode('');
         UpdateShowCapture(false);
@@ -105,9 +105,10 @@ tracks.forEach(track => track.stop())
      
       var ctx = capture.current.getContext( '2d' );
       //var img = new Image();
-     
+      capture.current.width = stream.current.videoWidth; //document.width is obsolete
+      capture.current.height = stream.current.videoHeight;
       ctx.drawImage( stream.current, 0, 0, capture.current.width, capture.current.height );
-      console.log(stream.current.offsetWidth,' width  ')
+     
       //img.src		= capture.current.toDataURL( "image/png" );
       //img.width	= 240;
      
@@ -167,15 +168,19 @@ const CaptureImg = async () => {stopStreaming();
 
     
  
- 
+<div style={{display: 'flex',
+flexDirection: 'column',
+justifyContent: 'space-between',
+height: '100vh '}}>
 <div className="play-area-sub" style={{minWidth:'100%',minHeight:'67.5%',paddingBottom:'5px'}}  >
 <video id="stream" ref={stream}  className={ShowCapture?"zero capturedimg":'capturedimg'}></video>
      
-<canvas id="capture" width="320" height="240" ref={capture} />
+<canvas id="capture"  ref={capture} />
       { ImgNode.length>0 &&  
     <Box id="snapshot" ref={snapshot} className={ShowCapture?'':"zero"}  >
-     <img src={ImgNode}  alt='' className='capturedimg' /></Box>}
+     <img src={ImgNode}  alt=''  className='capturedimg'/></Box>}
    </div>
+   <div>
    <Box m={1} sx={{width:{md:'50%',xs:'70%'},margin:'auto'}} id='NoplateText'>
    <TextField id="outlined-basic" label="Number Plate" variant="outlined" fullWidth value={NoPlate} onChange={(e)=>{updateNoPlate(e.target.value)}}/>
    </Box>
@@ -184,7 +189,7 @@ const CaptureImg = async () => {stopStreaming();
   <button id="btn-capture" type="button" className="button" ref={ btnCapture} onClick={captureSnapshot} disabled={ShowCapture}>Capture Image</button>
   <Link to='/' style={{textDecoration:'none',color:'black'}} onClick={(e)=>{e.preventDefault();stopStreaming(); setTimeout(()=>navigate('/'),1000);}}><button id="btn-stop" type="button" className="button"  >Back</button></Link>
   <button id="btn-sub" type="button" className="button" onClick={CaptureImg} disabled={!ShowCapture}>Submit</button>
-  </div></>
+  </div></div></div></>
   );
 };
 
