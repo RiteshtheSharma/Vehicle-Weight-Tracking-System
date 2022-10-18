@@ -10,6 +10,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Loading } from '../Loading';
+
 import axios from 'axios';
 
 const Response = () => {
@@ -19,6 +21,7 @@ const Response = () => {
 const [VehicleInfo, setVehicleInfo] = useState(null)
 
 useEffect(() => {
+
     console.log(Number_Plate,Weight,' in response ')
     if(Number_Plate == null) navigate('/')
   axios.post('http://127.0.0.1:5000/vehicle_information',{"Number_Plate" :Number_Plate}).then(
@@ -26,6 +29,9 @@ useEffect(() => {
     resp=>{
         setVehicleInfo({...resp.data});console.table(resp.data,'vehicle info');}
   )
+    
+  
+    
    
  
 }, [])
@@ -33,7 +39,13 @@ useEffect(() => {
   return (
     <Stack >
 
-    <Stack sx={{margin:{sm:'100px auto',xs:'60px auto'}}}>
+   
+    {!VehicleInfo &&
+     <Loading/>
+    
+    }
+    {VehicleInfo &&<>
+      <Stack sx={{margin:{sm:'100px auto',xs:'60px auto'}}}>
     <Typography variant='h3' fontWeight='800'  fontSize={{
               xs: "30px",
               sm: "40px",
@@ -43,8 +55,6 @@ useEffect(() => {
     </Typography>
     </Stack>
     <Stack mx={4} mb={4}>
-    {VehicleInfo &&
-    
         <TableContainer component={Paper}>
       <Table aria-label="simple table">
         <caption style={{padding:'20px',textAlign:'center',fontSize:'x-large'}}>Information of vehicle</caption>
@@ -68,10 +78,10 @@ useEffect(() => {
         </TableBody>
       </Table>
     </TableContainer>
-
+</Stack></>
     }
 
-    </Stack>
+    
     </Stack>
   )
 }

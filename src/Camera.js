@@ -12,7 +12,7 @@ import { TextField } from "@mui/material";
 const Camera = () => {
   const [ImgNode, setImgNode] = useState('')
   const [NoPlate, setNoPlate] = useState('')
- 
+
   const updateNoPlate = (e)=>{setNoPlate(e)
   
   
@@ -55,6 +55,7 @@ const Camera = () => {
           // alert('some error encountered while streaming');
         
           console.log(e);
+
        });
 
       })
@@ -139,17 +140,15 @@ const UpdateShowCapture = (v)=>{
 setShowCapture(v);
 }
 
-useEffect(() => {
-  
- 
-})
+
+
 
 useEffect(() => {
   startStreaming();
   window.onbeforeunload = stopStreaming ();
-  return ()=>{
-    
-  }
+
+  
+ 
   }, [])
 
 
@@ -185,6 +184,8 @@ const CaptureImg = async () => {stopStreaming();
 flexDirection: 'column',
 justifyContent: 'space-between',
 height: '100vh '}}>
+
+
 <div className="play-area-sub" style={{minWidth:'100%',minHeight:'67.5%',paddingBottom:'5px'}}  >
 <video id="stream" ref={stream}  className={ShowCapture?"zero capturedimg":'capturedimg'}></video>
      
