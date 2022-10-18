@@ -12,6 +12,7 @@ import { TextField } from "@mui/material";
 const Camera = () => {
   const [ImgNode, setImgNode] = useState('')
   const [NoPlate, setNoPlate] = useState('')
+ 
   const updateNoPlate = (e)=>{setNoPlate(e)
   
   
@@ -41,8 +42,9 @@ const Camera = () => {
   
     if( mediaSupport && null == cameraStream.current ) {
   
-      navigator.mediaDevices.getUserMedia( { video: { facingMode: "environment"} } )
+      navigator.mediaDevices.getUserMedia( { video: { facingMode: "environment"} ,width: {exact: 1920}, height: {exact: 1080}  } )
       .then( function( mediaStream ) {
+       
         setImgNode('');
         UpdateShowCapture(false);
         cameraStream.current = mediaStream;
@@ -51,6 +53,7 @@ const Camera = () => {
   
         stream.current.play().catch((e)=>{
           // alert('some error encountered while streaming');
+        
           console.log(e);
        });
 
@@ -70,11 +73,12 @@ const Camera = () => {
   
   // Stop Streaming
   function stopStreaming() {
-  if( null != cameraStream.current ) {
+     if( null != cameraStream.current ) {
   
       var track = cameraStream.current.getTracks()[ 0 ];
   
       track.stop();
+      
       stream.current.load();
   
       cameraStream.current = null;
@@ -82,20 +86,24 @@ const Camera = () => {
       
     }
     else {
-      const video = document.querySelector('video');
+      const video =  stream?stream.current :document.querySelector('video');
 
 // A video's MediaStream object is available through its srcObject attribute
 const mediaStream = video.srcObject;
 
 // Through the MediaStream, you can get the MediaStreamTracks with getTracks():
+if(mediaStream){
 const tracks = mediaStream.getTracks();
 
-// Tracks are returned as an array, so if you know you only have one, you can stop it with: 
-tracks[0].stop();
+  // Tracks are returned as an array, so if you know you only have one, you can stop it with: 
+  tracks[0].stop();
+  
+  // Or stop all like so:
+  tracks.forEach(track => track.stop())
+}
 
-// Or stop all like so:
-tracks.forEach(track => track.stop())
     }
+    return "Are you sure you want to leave?"
   }
   
   function captureSnapshot() {
@@ -107,7 +115,7 @@ tracks.forEach(track => track.stop())
       //var img = new Image();
       capture.current.width = stream.current.videoWidth; //document.width is obsolete
       capture.current.height = stream.current.videoHeight;
-      ctx.drawImage( stream.current, 0, 0, capture.current.width, capture.current.height );
+      ctx.drawImage( stream.current, 0, 0,  stream.current.videoWidth, stream.current.videoHeight);
      
       //img.src		= capture.current.toDataURL( "image/png" );
       //img.width	= 240;
@@ -132,11 +140,16 @@ setShowCapture(v);
 }
 
 useEffect(() => {
-  window.onbeforeunload = () => stopStreaming() ;
+  
+ 
 })
 
 useEffect(() => {
-  startStreaming()
+  startStreaming();
+  window.onbeforeunload = stopStreaming ();
+  return ()=>{
+    
+  }
   }, [])
 
 

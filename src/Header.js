@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Slide from '@mui/material/Slide';
 import PropTypes from 'prop-types';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { Link,useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import CameraIcon from '@mui/icons-material/Camera';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
@@ -71,20 +71,15 @@ const MyDropdown = () => (
 
    <ListItem  disablePadding>
 
-        <Link
        
-                  to='/'
-                  style={{textDecoration: "none", color: "#7F7F7F" }}
-                  
-                >
-          <ListItemButton >
+          <ListItemButton onClick={(e)=>{navigate('/')}}>
             <ListItemIcon>
                <Brightness1Icon /> 
 
             </ListItemIcon>
             <ListItemText primary='Home' />
           </ListItemButton>
-          </Link>
+          
       
         </ListItem>
 
@@ -107,20 +102,15 @@ const MyDropdown = () => (
 
 <ListItem disablePadding>
 
-<Link
 
-          to='img_capture'
-          style={{textDecoration: "none", color: "#7F7F7F" }}
-          
-        >
-  <ListItemButton >
+  <ListItemButton onClick={(e)=>{navigate('img_capture')}}>
     <ListItemIcon>
        <Brightness1Icon /> 
 
     </ListItemIcon>
     <ListItemText primary='Capture' />
   </ListItemButton>
-  </Link>
+  
 
 </ListItem>
     </List>
@@ -146,24 +136,18 @@ const MyDropdown = () => (
 
         <Box sx={{ display: {  sm: 'block',xs:'none' } }}>
      
-          <Link
-                  to='/'
-                  style={{textDecoration: "none", color: "white" }}
-                >
-            <Button  sx={{ color: '#fff' }}>
+        
+            <Button  sx={{ color: '#fff' }} onClick={(e)=>{navigate('/')}}>
             Home
-            </Button></Link>
+            </Button>
            
             <Button key='About' sx={{ color: '#fff' }} onClick={(e)=>{navigate('/');setTimeout(()=>{ window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })},200)}}>
             About
             </Button>
-            <Link
-                  to='img_capture'
-                  style={{textDecoration: "none", color: "white" }}
-                >
-            <Button  sx={{ color: '#fff' }}>
+            
+            <Button  sx={{ color: '#fff' }} onClick={(e)=>{navigate('img_capture')}}>
             Capture
-            </Button></Link>
+            </Button>
 
 
         </Box>
