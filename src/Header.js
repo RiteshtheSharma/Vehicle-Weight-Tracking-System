@@ -72,7 +72,7 @@ const MyDropdown = () => (
    <ListItem  disablePadding>
 
        
-          <ListItemButton onClick={(e)=>{navigate('/')}}>
+          <ListItemButton onClick={(e)=>{navigate('/');}}>
             <ListItemIcon>
                <Brightness1Icon /> 
 
@@ -89,7 +89,11 @@ const MyDropdown = () => (
   <ListItemButton onClick={(e)=>{ 
     
     // scroll()
-    navigate('/',{state:{ScrollVal:undefined}}) }}>
+    
+navigate('/');setTimeout(()=>{ window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })},200)
+
+    // navigate('/',{state:{ScrollVal:undefined}}) 
+    }}>
     <ListItemIcon>
        <Brightness1Icon /> 
 
