@@ -12,7 +12,6 @@ import { TextField } from "@mui/material";
 const Camera = () => {
   const [ImgNode, setImgNode] = useState('')
   const [NoPlate, setNoPlate] = useState('')
-
   const updateNoPlate = (e)=>{setNoPlate(e)
   
   
@@ -150,34 +149,54 @@ useEffect(() => {
   
  
   }, [])
+const OnImgCaptureBtn = () =>{
+  captureSnapshot();
+  var data = ImgNode.toString().replace("data:image/png;base64,", "");
+  fetch("http://127.0.0.1:5000/imageprocessing", {
+    method: "POST",
+   
+    body: data
+  }).then(res=>res.json()).then((res) => {console.log(res,' test')
+     
+  alert("Image sent Successfully");
+  stopStreaming();
+  
+    setNoPlate(res)
+    
+  }).catch(e=>console.log('error :',e));
 
+}
 
 
 const CaptureImg = async () => {stopStreaming();
   
   var data = ImgNode.toString().replace("data:image/png;base64,", "");
-  if(NoPlate.length!=10)
+  if(NoPlate.length<9 || NoPlate === 'Not Detected')
   {
-    alert("Please provide valid number plate");
+    alert("Please provide valid number plate or Recapture");
     setNoPlate("");
-    startStreaming();
+   
   }
   else{
+
     fetch("http://127.0.0.1:5000/photo", {
-    method: "POST",
-    headers:{ 
-      "textfield":
-      NoPlate
-    },
-    body: data
-  }).then(res=>res.json()).then((res) => {console.log(res['Weight'],' test')
-    alert("Image sent Successfully");
-    
-    stopStreaming();
-    setShowCapture(false);
-    setImgNode('');
-   navigate('/response',{state: {Number_Plate:res['Number Plate'],Weight:res['Weight'] }})
-  }).catch(e=>console.log('error :',e));
+      method: "POST",
+      headers:{
+        "textfield":NoPlate
+
+      },
+     
+    }).then(res=>res.json()).then((res) => {console.log(res['Number Plate'],res['Weight'],' test2')
+
+ 
+  setImgNode('');
+  setShowCapture(false);
+ 
+  
+ navigate('/response',{state: {Number_Plate:res['Number Plate'],Weight:res['Weight'] }})
+})
+       
+ 
 
   }
   
@@ -210,7 +229,7 @@ height: '100vh '}}>
    </Box>
   <div className="button-group">
   <button id="btn-start" type="button" className="button" ref = {btnStart} onClick={startStreaming} disabled={!ShowCapture}>Recapture</button>
-  <button id="btn-capture" type="button" className="button" ref={ btnCapture} onClick={captureSnapshot} disabled={ShowCapture}>Capture Image</button>
+  <button id="btn-capture" type="button" className="button" ref={ btnCapture} onClick={OnImgCaptureBtn} disabled={ShowCapture}>Capture Image</button>
   <Link to='/' style={{textDecoration:'none',color:'black'}} onClick={(e)=>{e.preventDefault();stopStreaming(); setTimeout(()=>navigate('/'),1000);}}><button id="btn-stop" type="button" className="button"  >Back</button></Link>
   <button id="btn-sub" type="button" className="button" onClick={CaptureImg} disabled={!ShowCapture}>Submit</button>
   </div></div></div></>
