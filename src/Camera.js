@@ -156,7 +156,14 @@ useEffect(() => {
 const CaptureImg = async () => {stopStreaming();
   
   var data = ImgNode.toString().replace("data:image/png;base64,", "");
-  fetch("http://127.0.0.1:5000/photo", {
+  if(NoPlate.length!=10)
+  {
+    alert("Please provide valid number plate");
+    setNoPlate("");
+    startStreaming();
+  }
+  else{
+    fetch("http://127.0.0.1:5000/photo", {
     method: "POST",
     headers:{ 
       "textfield":
@@ -164,13 +171,16 @@ const CaptureImg = async () => {stopStreaming();
     },
     body: data
   }).then(res=>res.json()).then((res) => {console.log(res['Weight'],' test')
-    alert("screenshot sended sucessfully");
+    alert("Image sent Successfully");
     
     stopStreaming();
     setShowCapture(false);
     setImgNode('');
    navigate('/response',{state: {Number_Plate:res['Number Plate'],Weight:res['Weight'] }})
   }).catch(e=>console.log('error :',e));
+
+  }
+  
 };
   return (<>
     
