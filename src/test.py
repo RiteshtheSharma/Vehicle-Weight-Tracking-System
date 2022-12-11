@@ -24,7 +24,6 @@ api = Api(app)
 
 CORS(app, resources={r"*": {"origins": "*"}})
 def getLicense(image):
-
    try:
        decoded_data = base64.b64decode(image)
        
@@ -106,7 +105,7 @@ class Photo(Resource):
     def post(self):
         
             
-            image = request.data
+           
             #print(image)
             #x=getLicense(image)
             #x=getLicense(image)
@@ -122,7 +121,9 @@ class Photo(Resource):
 class imageprocessing(Resource):
 
         def post(self):
+                print('req.data',request.data)
                 image = request.data
+
                 x=getLicense(image)
                 return x
 

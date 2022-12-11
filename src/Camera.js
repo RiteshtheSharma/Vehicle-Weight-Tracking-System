@@ -119,9 +119,22 @@ const tracks = mediaStream.getTracks();
      
       //img.src		= capture.current.toDataURL( "image/png" );
       //img.width	= 240;
-     
-    
       setImgNode(capture.current.toDataURL( "image/png" ));
+      var data = capture.current.toDataURL( "image/png" ).toString().replace("data:image/png;base64,", "");
+  
+      fetch("http://127.0.0.1:5000/imageprocessing", {
+        method: "POST",
+       body: data
+      }).then(res=>res.json()).then((res) => {console.log(res,' test')
+         
+      alert("Image sent Successfully");
+      stopStreaming();
+      
+        setNoPlate(res)
+        
+      }).catch(e=>console.log('error :',e));
+    
+     
       
       stopStreaming() ;
 
@@ -151,26 +164,15 @@ useEffect(() => {
   }, [])
 const OnImgCaptureBtn = () =>{
   captureSnapshot();
-  var data = ImgNode.toString().replace("data:image/png;base64,", "");
-  fetch("http://127.0.0.1:5000/imageprocessing", {
-    method: "POST",
-   
-    body: data
-  }).then(res=>res.json()).then((res) => {console.log(res,' test')
-     
-  alert("Image sent Successfully");
-  stopStreaming();
   
-    setNoPlate(res)
-    
-  }).catch(e=>console.log('error :',e));
+  
 
 }
 
 
 const CaptureImg = async () => {stopStreaming();
   
-  var data = ImgNode.toString().replace("data:image/png;base64,", "");
+ 
   if(NoPlate.length<9 || NoPlate === 'Not Detected')
   {
     alert("Please provide valid number plate or Recapture");
@@ -189,7 +191,7 @@ const CaptureImg = async () => {stopStreaming();
     }).then(res=>res.json()).then((res) => {console.log(res['Number Plate'],res['Weight'],' test2')
 
  
-  setImgNode('');
+  
   setShowCapture(false);
  
   
